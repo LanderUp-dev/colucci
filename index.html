@@ -71,8 +71,8 @@
           <form onsubmit="return validarFormulario(event);">
             <div class="field">
               <label for="f-nome">Nome</label>
-              <input id="f-nome" type="text" placeholder="Seu nome completo" pattern="^[A-Za-zÀ-ÿ\s]+$"
-                title="Digite apenas letras e espaços" required>
+              <input id="f-nome" type="text" placeholder="Seu nome completo" pattern="^([^0-9]*)$"
+                title="O nome não pode conter números" required>
             </div>
             <div class="field">
               <label for="f-email">E-mail</label>
