@@ -1,0 +1,102 @@
+:root {
+  --mapa-borda-estado: #ffffff;      /* Borda branca bem definida para separar os estados */
+  --mapa-cor-padrao: #cbd5e1;        /* Cinza/Azul ardósia nítido para estados não selecionados */
+  --mapa-hover: #1d4ed8;             /* Azul vibrante ao passar o mouse */
+  --mapa-active: #0f172a;            /* Navy escuro de alto contraste para o estado ativo */
+  --mapa-texto-padrao: #334155;      /* Texto escuro bem legível */
+  --mapa-texto-active: #ffffff;      /* Texto branco no estado ativo ou hover */
+}
+
+.mapa-component-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#map {
+  width: 100%;
+  height: auto;
+  display: block;
+  shape-rendering: geometricPrecision; /* Garante vetores e bordas super nítidos */
+}
+
+#map .state {
+  cursor: pointer;
+  outline: none;
+}
+
+#map .state:focus {
+  outline: none;
+}
+
+/* Estado Padrão (Inativo) */
+#map .model .state .shape {
+  fill: var(--mapa-cor-padrao);
+  stroke: var(--mapa-borda-estado);
+  stroke-width: 1.5px;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+#map .model #state_df .shape {
+  fill: var(--mapa-cor-padrao);
+  stroke: var(--mapa-borda-estado);
+  stroke-width: 1px;
+  transition: fill 0.2s ease;
+}
+
+#map .model .state .label_icon_state {
+  fill: var(--mapa-texto-padrao);
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: fill 0.2s ease;
+}
+
+/* Hover e Foco Acessível */
+#map .model .state:hover .shape,
+#map .model .state:focus-visible .shape {
+  fill: var(--mapa-hover) !important;
+}
+
+#map .model .state:hover .label_icon_state {
+  fill: #ffffff !important;
+}
+
+/* Estado Ativo (Selecionado/Destaque) */
+#map .model .state.active .shape {
+  fill: var(--mapa-active) !important;
+}
+
+#map .model .state.active .label_icon_state {
+  fill: var(--mapa-texto-active) !important;
+}
+
+#map .model #state_df:hover .shape {
+  fill: var(--mapa-hover) !important;
+}
+
+#map .model #state_df.active .shape {
+  fill: var(--mapa-active) !important;
+}
+
+#state_se .icon_state,
+#state_al .icon_state,
+#state_es .icon_state,
+#state_rj .icon_state,
+#state_rn .icon_state,
+#state_pb .icon_state,
+#state_df .icon_state {
+  r: 8 !important;
+}
+
+@media (max-width: 768px) {
+  .mapa-component-container {
+    max-width: 100%;
+  }
+}
